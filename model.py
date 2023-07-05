@@ -2,14 +2,13 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torch.utils.data import DataLoader
 import numpy as np
 import polars as pl
 import sys, os, glob, math, warnings, re
 from typing import List
 from collections import OrderedDict
 
-
-# To accelerate operations in the neural network, we move it to the GPU or MPS if available.
 
 class MLP(nn.Module):
     # multi-layer perceptron

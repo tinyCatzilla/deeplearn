@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from torch.utils.data import DataLoader
 import numpy as np
 import pandas as pd
 import polars as pl
@@ -10,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # TestTrain class
 # Example Usage:
-#   model = Model()
+#   model = MLP()
 #   device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 #   criterion = nn.CrossEntropyLoss()
 #   optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
