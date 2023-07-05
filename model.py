@@ -11,9 +11,10 @@ from collections import OrderedDict
 
 # To accelerate operations in the neural network, we move it to the GPU or MPS if available.
 
-class nn(nn.Module):
+class MLP(nn.Module):
+    # multi-layer perceptron
     def __init__(self, input_size:int, hidden_sizes:List[int], output_size:int, dropout:float=0.):
-        super(nn, self).__init__()
+        super().__init__()
         self.input_size = input_size
         self.hidden_sizes = hidden_sizes
         self.hidden_layers = len(hidden_sizes)
@@ -55,6 +56,8 @@ class nn(nn.Module):
     
     # def accuracy(self, logits, labels):
     #     return torch.mean((torch.argmax(logits, dim=1) == labels).float())
+
+    # class already has access to train() and eval() methods from nn.Module
     
 class Tokenizer(nn.Module):
     def __init__(self):

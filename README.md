@@ -1,2 +1,2 @@
 # deeplearn
-learning :>
+generic deep learning model

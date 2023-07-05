@@ -17,12 +17,12 @@ import sys, os, glob, math, warnings, re
 # - return input/output pair
 
 class mDataset(Dataset):
-    # x_path: path to the input files
-    # y_path: path to the output files
     # map_path: mapping between input/output
     # x_col: column of inputs
     # y_col: column of outputs
-    def __init__(self, map:str, x_col:str, y_col:str, input_path:str, output_path:str):
+    # x_path: path to the input files
+    # y_path: path to the output files
+    def __init__(self, map:str, x_col:str, y_col:str, x_path:str, y_path:str):
         
         # For now, lets use a test dataset
         # ill actually call this somewhere else instead, when i write more
@@ -33,8 +33,8 @@ class mDataset(Dataset):
         transform=ToTensor(),
         )
 
-        assert os.path.isdir(input_path), "Input path invalid"
-        assert os.path.isdir(output_path), "Output path invalid"
+        assert os.path.isdir(x_path), "Input path invalid"
+        assert os.path.isdir(y_path), "Output path invalid"
         assert os.path.isfile(map), "Map path invalid"
         
         self.map = pl.read_csv(map)
@@ -42,8 +42,8 @@ class mDataset(Dataset):
         assert y_col in self.map.columns, "output column not in map."
         self.x_col = x_col
         self.y_col = y_col
-        self.x_path = input_path
-        self.y_path = output_path
+        self.x_path = x_path
+        self.y_path = y_path
 
         # todo transforms
         self.x_transform = None
