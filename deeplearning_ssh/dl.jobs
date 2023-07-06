@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=dl_Test
+#SBATCH -p defq
+#SBATCH --nodelist=vh-J9HVI-AIML3
+#SBATCH --nodes=1
+#SBATCH -o /data/aiiih/projects/echo/zOut/dl/%x.out
+#SBATCH -e /data/aiiih/projects/echo/zOut/dl/%x.err
+
+# Load application environment
+module load cuda11.7/toolkit/11.7.1
+module load python39
+
+# Run application commands
+. /data/aiiih/envs/echo/bin/activate
+python3 main.py
